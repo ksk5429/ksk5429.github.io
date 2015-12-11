@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	
+		<!-- Dashboard JS Exercise -->
+		<!-- Based on the Bootstrap Dashboard example, http://getbootstrap.com/getting-started/ -->
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Dashboard JS Exercise</title>
+
+		<!-- Include Bootstrap CSS Framework -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Include Custom CSS For This Template -->
+		<link rel="stylesheet" href="dashboard.css">
+		<!-- Include Custom CSS For This Exercise -->
+		<link rel="stylesheet" href="style.css">
+	
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li id="nav-Overview" class="active"><a href="#">Overview</a></li>
+            <li id="nav-Reports"><a href="#">Reports</a></li>
+            <li id="nav-Plots"><a href="#">Plots</a></li>
+            <li id="nav-Export"><a href="#">Export</a></li>
+          </ul>
+        </div>
+				
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </div>
+
+					<div id="content" class="row">
+					
+					
+					<!-- =========================================
+					            Content Goes Here
+					========================================== -->
+					
+					
+					</div>
+        </div>
+      </div>
+    </div>
+
+    <!--  Include JavaScript files -->
+    <!-- Placed at the end of the document so the pages load faster -->
+		<!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include Bootstrap JS Framework -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<!-- Include Custom JS For This Exercise -->
+		<script>
+        
+            // Place JavaScript Code Below
+$(document).ready(function(){
+// Add functionality to nav-sidebar
+$('.nav-sidebar li').click(function(e) {
+// Prevent browser from opening link
+e.preventDefault();
+// Select current element
+var $this = $(this);
+if (!$this.hasClass('active')) {
+// Remove the class 'active' from all elements
+$('.nav-sidebar li.active').removeClass('active');
+// Add the class 'active' to current element
+$this.addClass('active');
+// Add changeContent( $this.text() );
+showContent( $this.text() );
+loadContent()
+// Alert Message
+// alert("You clicked on '"+$this.text()+"'");
+}
+});
+});
+
+ //
+ // Function for loading all page content
+ //
+ function loadContent(){
+ // Load Overview
+ var contentOverview = $(
+ '<div id="content-Overview" class="col-md-12 sub-contents">'+
+ ' <div class="row">'+
+ ' <div class="col-md-12">'+
+ ' <h2 class="sub-header">Overview</h2>'+
+ ' </div>'+
+ ' <div class="col-md-8 content-left">'+
+ ' This webpage is an example of a dashboard.</div>'+
+ ' <div class="col-md-4 content-right"></div>'+
+ ' </div>'+
+ '</div>');
+ $('div#content').append( contentOverview );
+
+ // Load Reports
+ var contentReports = $(
+ '<div id="content-Reports" class="col-md-12 sub-contents">'+
+ ' <div class="row">'+
+ ' <div class="col-md-12">'+
+ ' <h2 class="sub-header">Reports</h2>'+
+ ' </div>'+
+ ' <div class="col-md-8 content-left">'+
+ ' <h4>Links to Reports</h4>'+
+ ' <ul>'+
+ ' <li><a href="">Link 1</a></li>'+
+ ' <li><a href="">Link 2</a></li>'+
+ ' <li><a href="">Link 3</a></li>'+
+ ' </ul>'+
+ ' </div>'+
+ ' <div class="col-md-4 content-right"></div>'+
+ ' </div>'+
+ '</div>');
+ contentReports.hide();
+ $('div#content').append( contentReports );
+     
+ // Load Plots
+ var contentPlots = $(
+ '<div id="content-Plots" class="col-md-12 sub-contents">'+
+ ' <div class="row">'+
+ ' <div class="col-md-12">'+
+ ' <h2 class="sub-header">Plots</h2>'+
+ ' </div>'+
+ ' <div class="col-md-8 content-left">'+
+ ' <img src="data.png" style="width:100%;"/>'+
+ ' </div>'+
+ ' <div class="col-md-4 content-right"></div>'+
+ ' </div>'+
+ '</div>');
+ contentPlots.hide();
+ $('div#content').append( contentPlots );
+
+ // Load Export
+ var contentExport = $(
+ '<div id="content-Export" class="col-md-12 sub-contents">'+
+ ' <div class="row">'+
+ ' <div class="col-md-12">'+
+ ' <h2 class="sub-header">Export</h2>'+
+ ' </div>'+
+ ' <div class="col-md-8 content-left"></div>'+
+ ' <div class="col-md-4 content-right"></div>'+
+ ' </div>'+
+ '</div>');
+ contentExport.hide();
+ $('div#content').append( contentExport );
+ }
+
+ //
+ // Function for changing which content is displayed
+ //
+ function showContent( activeContent ){
+ $('div#content div.sub-contents').hide();
+ $('div#content div#content-'+activeContent).show();
+ }
+		</script>
+		
+  </body>
+</html>
